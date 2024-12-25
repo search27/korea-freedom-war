@@ -16,5 +16,5 @@ if (cluster.isMaster) {
 }
 else {
     console.log('Worker proccess : ' + process.pid);
-    const app = new MainServer_1.MainServer(3001);
+    const app = new MainServer_1.MainServer(3002);
 }
