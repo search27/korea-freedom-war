@@ -1,0 +1,88 @@
+html {
+    background-color: #c44d44;
+}
+.wrapper {
+    width: 100%;
+    max-width: 1200px;
+    height: 100%;
+}
+.logo {
+    position: fixed;
+    top : 50%;
+    left : 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    z-index: -1;
+}
+.h1 {
+    color : white;
+    text-align: center;
+}
+.msg {
+    color : white;
+    text-align: justify;
+}
+
+.msg span {
+    color : white;
+    font-weight: 900;
+}
+.msg p {
+    color : white;
+    text-align: justify;
+}
+
+
+.msg-1 {
+    background: rgba(0, 0, 0, 0.5);
+    padding : 20px;
+    margin-top: 50px;
+    color : white;
+
+    border-radius: 10px;
+    text-align: justify;
+    white-space: break-spaces;
+}
+.msg-1 p {
+    line-height: 52px;
+}
+
+.security {
+    position: fixed;
+    top : 50px;
+    left : 50px;
+    width: 150px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+
+@media (max-width: 576px) {
+
+    .wrapper {
+        padding : 20px;
+    }
+    .h1 {
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+
+    .msg span {
+        font-size: 22px;
+    }
+    .msg p {
+        font-size: 18px;
+    }
+
+    .msg-1 p {
+        font-size: 15px;
+    }
+
+    .security {
+        top : initial;
+        left : initial;
+        right: 20px;
+        bottom: 20px;
+        width: 70px;
+    }
+}
