@@ -55,6 +55,43 @@ html {
     border-radius: 50%;
     cursor: pointer;
 }
+.sovereignty {
+    position: fixed;
+    top : 250px;
+    left : 50px;
+    width: 150px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.sovereignty-wrapper {
+    position: fixed;
+    top : 0;
+    left : 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+}
+
+.sovereignty-wrapper * {
+    color : white;
+    padding : 10px 30px;
+}
+.sovereignty-wrapper > div {
+    display: inline-block;
+    width: 100%;
+    height: calc(100% - 143px);
+    overflow: auto;
+}
+.sovereignty-wrapper > div > div {
+    background: rgba(0, 0, 0, 0.5);
+    margin : 50px 0;
+    border : 1px solid white;
+}
+.sovereignty-wrapper > div > div > p {
+    font-size: 33px;
+    border : 1px solid white;
+}
 
 
 @media (max-width: 576px) {
@@ -85,4 +122,30 @@ html {
         bottom: 20px;
         width: 70px;
     }
+    .sovereignty {
+        top : initial;
+        left : initial;
+        right: 20px;
+        bottom: 100px;
+        width: 70px;
+    }
+
+    .sovereignty-wrapper > h1 {
+        font-size: 45px;
+    }
+    .sovereignty-wrapper > div {
+        height: calc(100% - 86px);
+    }
+
+
+    .sovereignty-wrapper * {
+        padding: 10px 10px;
+    }
+    .sovereignty-wrapper p {
+        font-size: 18px;
+    }
+    .sovereignty-wrapper > div > div > p {
+        font-size: 22px;
+    }
+
 }
