@@ -83,6 +83,11 @@
 
             }
 
+            const HidePresident = () => {
+                const presidentMsg = document.getElementById('presidentMsg');
+                presidentMsg.style.display = 'none';
+            }
+
             window.onload = function(){
 
             }
@@ -104,6 +109,10 @@
                 <div class="msg-1">
                     <p> 네이버 블로그 - <a href="https://blog.naver.com/ze355/223711530639"> 국민 주권이란, 권영세 의원의 사과의 의미는- </a> </p>
                     <p>권영세 의원의 사과는 탄핵 반대는 사람들에 대한 사과였습니다.</p>
+                    <p> 네이버 블로그 - <a href="https://blog.naver.com/ze355/223709050697"> 이 나라의 진짜 국민 </a> </p>
+                    <p> 네이버 블로그 - <a href="https://blog.naver.com/ze355/223708612804"> 무안공항 참사에 대한 자유민주주의 입장문 발표 </a> </p>
+                    <p>무안항공 참사에 관련되어 테러 가능성이 제기되고 있습니다.</p>
+                    <p>해당 건이 사실이라면 우리 자유 민주주의 진형에서는 국가간의 '전쟁', 제 4차 세계대전을 각오함을 밝힙니다.</p>
                 </div>
             </div>
 
@@ -258,6 +267,12 @@
             </div>
         </div>
         
+        <div id="presidentMsg" class="president-msg" onclick="HidePresident()">
+            <h3>대통령으로부터의 메시지</h3>
+            <div>
+                <img src="/images/president.jpeg" />
+            </div>
+        </div>
 
     </body>
 </html>
