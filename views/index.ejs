@@ -88,7 +88,16 @@
                 presidentMsg.style.display = 'none';
             }
 
+            const campToggle = () => {
+                const camp = document.getElementById('camp');
+                if(camp.style.display === 'none') camp.style.display = 'block';
+                else camp.style.display = 'none';
+            }
+
             window.onload = function(){
+
+                const camp = document.getElementById('camp');
+                camp.addEventListener('click', campToggle);
 
             }
 
@@ -101,7 +110,7 @@
         <div class="wrapper">
             <img class="logo" src="/images/freemdom.webp" />
             
-
+            
             <h1 class="h1">아레스 사이버 정보 수사청</h1>
             <div class="msg">
                 <p><span>내란</span> : 현 정권에 '반'하는 세력이 일으키는 것을 뜻합니다.</p>
@@ -214,6 +223,10 @@
             title="헌법에서 말하는 국민주권에 대해 알아봅시다."
             onclick="ShowSovereignty(event)"
         />
+        <img class="trust" src="/images/truth.png"
+            title="진실"
+            onclick="campToggle()"
+        />
 
         <div id="sovereignty" class="sovereignty-wrapper" onclick="HideSovereignty(event)"
             style="display: none;"
@@ -273,6 +286,31 @@
                 <img src="/images/president.jpeg" />
             </div>
         </div>
+
+        
+
+        <div class="freedom">
+            <img src="/images/freedom.webp"
+                title="대한민국의 대표 자유민주주의, 우파 정당, 자유민주당"
+                onclick=""
+            />
+            <span>대한민국의 대표 자유민주주의, 우파 정당, 자유민주당</span>
+        </div>
+
+        <div id="camp" class="sovereignty-wrapper" style="display: none;">
+            <h3>1. 진실 알리기 </h3>
+            <div>
+                <p>모든 언론 매체들이 '표현의 자유', '언론의 자유' 등을 명목으로 내세우며, 언론을 '권력'으로 '활용'하고 있습니다.</p>
+                <p>또한 현재 공수처는 '불법 영장'까지 발부하며 '노골적으로' '국민 주권'을 '탈환'하고자 하고 있습니다.</p>
+                <p>현재 대한민국은 그 어떤 시기보다 가장 위험한 시기에 놓여 있습니다.</p>
+    
+                <p>따라서 우리 자유민주주의 수호자들은 앞장 서서 '진실 알리기'를 전파해야 됩니다.</p>
+                <p>윤석열 대통령은 그 어떤 대통령도 하지 못했던 가장 훌령한 행동을 현재 하고 있는 중입니다.</p>
+            </div>
+        </div>
+
+        
+
 
     </body>
 </html>
