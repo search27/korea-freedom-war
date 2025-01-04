@@ -210,4 +210,19 @@ html {
         font-size: 22px;
     }
 
+    .trust {
+        top : initial;
+        left : initial;
+        right: 20px;
+        bottom: 220px;
+        width: 70px;
+    }
+    .president-msg > h3 {
+        font-size: 22px;
+    }
+    .president-msg > div img {
+        width: 100%;
+        height: initial;
+    }
+
 }
