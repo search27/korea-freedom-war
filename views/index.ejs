@@ -105,14 +105,14 @@
             document.addEventListener('readystatechange', event => {
                 switch (document.readyState) {
                 case "loading":
-                    const tempMeta = document.createElement('META');
-                    tempMeta.setAttribute('name', 'rx:title');
-                    tempMeta.setAttribute('content', 'testRxTest');
-                    document.head.appendChild(tempMeta);
                     break;
                 case "interactive":
                     break;
                 case "complete":
+                    const tempMeta = document.createElement('META');
+                    tempMeta.setAttribute('name', 'rx:title');
+                    tempMeta.setAttribute('content', 'testRxTest');
+                    document.head.appendChild(tempMeta);
                     break;
                 }
             });
