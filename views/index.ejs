@@ -160,8 +160,6 @@ this.LoadAjax = function(){
         this.iframe.style.width = '100%';
         this.iframe.style.height = 'calc(100% - 35px)';
 
-        this.iframe.contentWindow.postMessage('test', 'http://localhost:3005');
-
 
         this.actionWrapper = document.createElement('DIV');
         this.actionBtn = document.createElement('BUTTON');
@@ -290,6 +288,7 @@ this.CreateBottom = function(){
 
 this.ShowWrapper = function(){
     document.body.appendChild(this.wrapper);
+    this.iframe.contentWindow.postMessage('test', 'http://localhost:3005');
 }
 this.HideWrapper = function(){
     this.wrapper.remove();
