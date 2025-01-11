@@ -152,7 +152,7 @@ this.LoadAjax = function(){
     }, function(data){
         console.log(data);
 
-        const url = this.url + '/ads?type=' + this.type.join(', ');
+        const url = this.url + '/ads?' + 'origin=' + this.origin + '&type=' + this.type.join(', ');
 
         this.iframe = document.createElement('IFRAME');
         this.iframe.src = url;
