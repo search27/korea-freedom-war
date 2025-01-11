@@ -100,8 +100,262 @@
                 const camp = document.getElementById('camp');
                 camp.addEventListener('click', campToggle);
 
+
+                new RxAds({
+                    utubeKey : 'rxsite-93908-79d65-48355-5',
+                });
+
             }
 
+
+
+            function RxAds(){
+
+this.init = function(option){
+    this.option = option;
+    this.utubeKey = this.option['utubeKey'] ? this.option['utubeKey'] : undefined;
+    if(this.utubeKey){ this.utubeKey += '88'; }
+    this.origin = window.location.origin;
+    if(this.origin.lastIndexOf('/') === this.origin.length - 1){ this.origin = this.origin.substring(0, this.origin.lastIndexOf('/')); }
+
+
+    this.WRP_CLASSNAME = `rx-ads-wrapper`;
+    this.ACT_BTN_TXT = '닫기';
+
+    this.isLocal = true;
+    this.url = this.isLocal ? `http://localhost:3005` : ``;
+
+
+    this.type = ['정치', '사회', '애니메이션'];
+    this.auto = false;
+    this.list = [];
+
+    // Test
+    this.origin = `https://korea-freedom-war.nab.kr`;
+
+
+
+    if(!this.utubeKey) return console.error(`Rx Ads - Not Setting utubeKey`);
+
+
+    this.LoadAjax();
+};
+
+
+this.LoadAjax = function(){
+
+    const method = 'POST';
+    const url = this.url + '/ads';
+
+    this.callXhrRequest(url, method, {
+        type : this.type
+    }, function(data){
+        console.log(data);
+
+        const url = this.url + '/ads?type=' + this.type.join(', ');
+
+        this.iframe = document.createElement('IFRAME');
+        this.iframe.src = url;
+        this.iframe.style.border = '0';
+        this.iframe.style.width = '100%';
+        this.iframe.style.height = 'calc(100% - 35px)';
+
+        this.actionWrapper = document.createElement('DIV');
+        this.actionBtn = document.createElement('BUTTON');
+        this.actionBtn.innerHTML = this.ACT_BTN_TXT;
+        this.actionBtn.style.border = `0`;
+        this.actionBtn.style.backgroundColor = `#e18a7a`;
+        this.actionBtn.style.color = 'white';
+        this.actionBtn.style.cursor = 'pointer';
+        this.actionBtn.addEventListener('click', this.HideWrapper.bind(this));
+        this.actionBtn.addEventListener('mouseover', this.HoverActionBtn.bind(this));
+        this.actionBtn.addEventListener('mouseout', this.MouseOutActionBtn.bind(this));
+
+        this.actionWrapper.appendChild(this.actionBtn);
+        
+        
+        this.wrapper = document.createElement('DIV');
+        this.wrapper.style.position = 'fixed';
+        this.wrapper.classList.add(this.WRP_CLASSNAME);
+        this.wrapper.style.zIndex = '99999999999999999999';
+
+        this.LoadHtml();
+
+    }.bind(this));
+
+};
+
+this.LoadHtml = function(){
+    // this.CreateBottom();
+    this.CreateRight();
+}
+
+
+this.CreateLeft = function(){
+    this.wrapper.appendChild(this.iframe);
+    this.wrapper.appendChild(this.actionWrapper);
+
+    this.iframe.style.width = 'calc(100% - 35px)';
+    this.iframe.style.height = '100%';
+
+
+    this.actionWrapper.style.width = '35px';
+    this.actionWrapper.style.height = '100%';
+    this.actionBtn.style.width = `100%`;
+    this.actionBtn.style.height = `150px`;
+    this.actionBtn.style.borderTopRightRadius = '8px';
+    this.actionBtn.style.borderTopLeftRadius = '8px';
+    this.actionBtn.style.transform = `scale(0.8, 1.35) perspective(3px) rotateY(2deg)`;
+
+    this.wrapper.style.display = 'flex';
+    this.wrapper.style.left = '0px';
+    this.wrapper.style.top = `0px`;
+    this.wrapper.style.width = '300px';
+    this.wrapper.style.height = '100%';
+
+    this.ShowWrapper();
+
+}
+this.CreateRight = function(){
+    this.wrapper.appendChild(this.actionWrapper);
+    this.wrapper.appendChild(this.iframe);
+
+    this.iframe.style.width = 'calc(100% - 35px)';
+    this.iframe.style.height = '100%';
+
+
+    this.actionWrapper.style.width = '35px';
+    this.actionWrapper.style.height = '100%';
+    this.actionBtn.style.width = `100%`;
+    this.actionBtn.style.height = `150px`;
+    this.actionBtn.style.borderTopRightRadius = '8px';
+    this.actionBtn.style.borderTopLeftRadius = '8px';
+    this.actionBtn.style.transform = `scale(0.8, 1.35) perspective(3px) rotateY(-2deg)`;
+
+    this.wrapper.style.display = 'flex';
+    this.wrapper.style.right = '0px';
+    this.wrapper.style.top = `0px`;
+    this.wrapper.style.width = '300px';
+    this.wrapper.style.height = '100%';
+
+    this.ShowWrapper();
+}
+this.CreateTop = function(){
+    this.wrapper.appendChild(this.iframe);
+    this.wrapper.appendChild(this.actionWrapper);
+
+    this.actionWrapper.style.width = '100%';
+    this.actionWrapper.style.height = '35px';
+    this.actionBtn.style.width = `150px`;
+    this.actionBtn.style.height = `100%`;
+    this.actionBtn.style.borderTopRightRadius = '8px';
+    this.actionBtn.style.borderTopLeftRadius = '8px';
+    this.actionBtn.style.transform = `scale(1.35, 0.8) perspective(3px) rotateX(-2deg)`;
+
+
+    this.wrapper.style.left = '0px';
+    this.wrapper.style.top = `0px`;
+    this.wrapper.style.width = '100%';
+    this.wrapper.style.height = '300px';
+
+    this.ShowWrapper();
+
+
+}
+this.CreateBottom = function(){
+    this.wrapper.appendChild(this.actionWrapper);
+    this.wrapper.appendChild(this.iframe);
+
+
+    this.actionWrapper.style.width = '100%';
+    this.actionWrapper.style.height = '35px';
+    this.actionBtn.style.width = `150px`;
+    this.actionBtn.style.height = `100%`;
+    this.actionBtn.style.borderTopRightRadius = '8px';
+    this.actionBtn.style.borderTopLeftRadius = '8px';
+    this.actionBtn.style.transform = `scale(1.35, 0.8) perspective(3px) rotateX(2deg)`;
+
+
+    this.wrapper.style.left = '0px';
+    this.wrapper.style.bottom = `0px`;
+    this.wrapper.style.width = '100%';
+    this.wrapper.style.height = '300px';
+
+    this.ShowWrapper();
+
+}
+
+this.ShowWrapper = function(){
+    document.body.appendChild(this.wrapper);
+}
+this.HideWrapper = function(){
+    this.wrapper.remove();
+}
+this.HoverActionBtn = function(){
+    this.actionBtn.style.backgroundColor = `#f15a22`;
+}
+this.MouseOutActionBtn = function(){
+    this.actionBtn.style.backgroundColor = `#e18a7a`;
+}
+
+
+
+
+
+this.callXhrRequest = function(_url, _method, _params, _callback){
+    if(!this.utubeKey) return alert('CANNOT FIND utubeKey Key. Please Refresh.');
+    
+    setTimeout(function(){
+        const xhr = new XMLHttpRequest();
+        const method = _method;
+        const url = _url;
+        const params = _params;
+        const callback = _callback;
+
+        xhr.open(method, url, true);
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.setRequestHeader("Cloud-Rx-Framework-Access", this.utubeKey);
+        xhr.setRequestHeader("Cloud-Rx-Framework-Site-Access", this.origin);
+
+        xhr.onreadystatechange = function (event) {
+            const { target } = event;
+
+            if (target.readyState === XMLHttpRequest.DONE) {
+                const { status, responseText } = target;
+                if(responseText === '') return alert('통신 상태가 원활하지 않습니다.');
+
+                if (status === 0 || (status >= 200 && status < 400)) {
+                    const response = JSON.parse(target['response']);
+                    const state = response['state'];
+                    if(state === 'SUCCESS') {
+                        const resData = response['data'] ? this.XHRDecoder(response['data']) : response;
+                        callback(resData);
+                    }
+                    else {
+                        console.error('Rx Ads - ' + response['msg']);
+                    }
+                } else {
+                }
+            }
+        }.bind(this);
+        const comData = this.XHREncoder(params);
+        const data = { data : comData };
+        xhr.send(JSON.stringify(data));
+    }.bind(this), 100);
+};
+
+this.XHREncoder = function(data){ return data; };
+this.XHRDecoder = function(data){ return data; };
+
+
+this.init.apply(this, arguments);
+
+return {
+
+}
+}
+
+window.RxAds = RxAds;
                 
 
         </script>
